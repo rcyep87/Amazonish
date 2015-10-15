@@ -8,5 +8,9 @@ Rails.application.routes.draw do
   resources :users
   resources :lineitems
 
+  resources :orders do
+    resources :lineitems
+  end
+
   root 'items#index'
 end
