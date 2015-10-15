@@ -17,28 +17,14 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
-  # GET /orders/1/edit
   def edit
   end
 
-  # POST /orders
-  # POST /orders.json
-  def create
+  def create #starts order
     @order = Order.new(user_id: current_user.id)
-    redirect_to root_path, notice: "Your order has begun!"
-    # respond_to do |format|
-    #   if @order.save
-    #     format.html { redirect_to @order, notice: 'Order was successfully started.' }
-    #     format.json { render :show, status: :created, location: @order }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @order.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    redirect_to root_path, notice: "Your order has started!"
   end
 
-  # PATCH/PUT /orders/1
-  # PATCH/PUT /orders/1.json
   def update
     respond_to do |format|
       if @order.update(order_params)
@@ -51,8 +37,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  # DELETE /orders/1
-  # DELETE /orders/1.json
   def destroy
     @order.destroy
     respond_to do |format|
