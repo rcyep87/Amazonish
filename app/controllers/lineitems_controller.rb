@@ -1,5 +1,5 @@
 class LineitemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_lineitem, only: [:show, :edit, :update, :destroy]
 
   def index
     @lineitems = Lineitem.all
