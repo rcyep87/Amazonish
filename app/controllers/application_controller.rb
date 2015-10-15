@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   # before_action :setup_sidebar
-  before_action :authenticate_user
+  # before_action :authenticate_user
   helper_method :user_logged_in?, :current_user
 
   # def setup_sidebar
@@ -19,7 +19,6 @@ class ApplicationController < ActionController::Base
       User.find(session[:user_id])
     end
   end
-  helper_method :current_user #Saying this allows me to call the current_user method from a view now instead of ONLY from a controller
 
   def user_logged_in?
     session[:user_id].present?
