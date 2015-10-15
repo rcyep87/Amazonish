@@ -29,8 +29,6 @@ class LineitemsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /items/1
-  # PATCH/PUT /items/1.json
   def update
     respond_to do |format|
       if @lineitem.update(item_params)
