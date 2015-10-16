@@ -17,7 +17,7 @@ class LineitemsController < ApplicationController
 
   def create
     @lineitem = Lineitem.new(lineitem_params)
-    
+
     @lineitem.order_id = current_user.current_cart.id
 
     if @lineitem.save!
