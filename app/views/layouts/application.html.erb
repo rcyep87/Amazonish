@@ -37,7 +37,9 @@
 </head>
 <body>
   <% if Order.user_order_exists?(current_user) %>
-    <%= render partial: 'shared/neworder' %>
+    <% if Order.user_has_unpaid_order(current_user) %>
+      <%= render partial: 'shared/neworder' %>
+    <% end %>
   <% end %>
 <%= yield %>
 <%= params.inspect %>
