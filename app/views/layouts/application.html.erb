@@ -36,10 +36,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% unless Order.user_order_exists?(current_user) %>
+  <% if Order.user_order_exists?(current_user) %>
     <%= render partial: 'shared/neworder' %>
   <% end %>
 <%= yield %>
+<%= params.inspect %>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
 </body>

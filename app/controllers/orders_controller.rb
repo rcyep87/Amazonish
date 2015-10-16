@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
 
   def create #starts order
     if current_user
-      @order = Order.new(user_id: current_user.id)
+      @order = Order.create(user_id: current_user.id)
       redirect_to root_path, notice: "Your order has started!"
     else
       redirect_to root_path, notice: "Please Create an Account or Login to start a new order."

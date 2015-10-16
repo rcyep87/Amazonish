@@ -5,6 +5,6 @@ class Order < ActiveRecord::Base
   has_many :items, through: :lineitems
 
   def self.user_order_exists?(user)
-    where(user_id: user.id) if user
+    where(user_id: user.id).empty? if user
   end
 end
