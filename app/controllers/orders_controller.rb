@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
       @order = Order.new(user_id: current_user.id)
       redirect_to root_path, notice: "Your order has started!"
     else
-      redirect_to root_path, notice: "Please login to start a new order."
+      redirect_to root_path, notice: "Please Create an Account or Login to start a new order."
     end
   end
 
