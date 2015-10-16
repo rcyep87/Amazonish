@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<% if @order.paid == false %>
+  <p><%= link_to 'Complete Order', order_path(@order), method: :PUT %></p>
+<% end %>
+
 <p>
   <strong>User:</strong>
   <%= @order.user.first_name %>

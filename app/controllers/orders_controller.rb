@@ -31,16 +31,10 @@ class OrdersController < ApplicationController
 
   def update
 
-    mark_as_paid = Order.update()
-    respond_to do |format|
-      if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-        format.json { render :show, status: :ok, location: @order }
-      else
-        format.html { render :edit }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
+    @order.paid = true
+    @order.save
+    redirect_to order_path(@order.id), notice: "Thank you for your purchase!"
+
   end
 
   def destroy
