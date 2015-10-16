@@ -21,7 +21,7 @@
         <td>$<%= item.price %></td>
         <td><%= item.quantity %></td>
         <% if current_user %>
-          <td><%= link_to('Add to cart', lineitems_path(lineitem: {item_id: item.id, quantity: 1, order_id: current_user.orders.first.id}),
+          <td><%= link_to('Add to cart', lineitems_path(lineitem: { item_id: item.id, quantity: 1, order_id: User.find(current_user.id).orders.where(paid: false).first.id }),
             method: :POST) %></td>
         <% end %>
       </tr>

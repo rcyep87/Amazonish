@@ -16,17 +16,11 @@ class LineitemsController < ApplicationController
   end
 
   def create
-    @lineitem = Lineitem.new(item_params)
+    @lineitem = Lineitem.create(lineitem_params)
 
-    respond_to do |format|
-      if @lineitem.save
-        format.html { redirect_to @lineitem, notice: 'Lineitem was successfully created.' }
-        format.json { render :show, status: :created, location: @lineitem }
-      else
-        format.html { render :new }
-        format.json { render json: @lineitem.errors, status: :unprocessable_entity }
-      end
-    end
+    redirect_to root_path, notice: "You've added something to your order!"
+    # item_id: item.id, order_id: User.find(current_user.id).orders.where(paid: false).first.id
+
   end
 
   def update
@@ -57,6 +51,6 @@ class LineitemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lineitem_params
-      params.require(:item).permit(:name, :description, :price, :quantity)
+      params.require(:lineitem).permit(:name, :description, :price, :quantity)
     end
 end
