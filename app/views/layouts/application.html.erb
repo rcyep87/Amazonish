@@ -36,8 +36,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% if Order.user_order_exists?(current_user) %>
-    <% if Order.user_has_unpaid_order(current_user) %>
+  <% unless Order.user_order_exists?(current_user) %>
+    <% if Order.user_has_unpaid_order?(current_user) %>
       <%= render partial: 'shared/neworder' %>
     <% end %>
   <% end %>

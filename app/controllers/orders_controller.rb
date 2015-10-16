@@ -30,6 +30,8 @@ class OrdersController < ApplicationController
   end
 
   def update
+
+    mark_as_paid = Order.update()
     respond_to do |format|
       if @order.update(order_params)
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
