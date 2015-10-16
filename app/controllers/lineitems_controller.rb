@@ -16,9 +16,15 @@ class LineitemsController < ApplicationController
   end
 
   def create
-    @lineitem = Lineitem.create(lineitem_params)
+    @lineitem = Lineitem.new(lineitem_params)
+    
+    @lineitem.order_id = current_user.current_cart.id
 
-    redirect_to root_path, notice: "You've added something to your order!"
+    if @lineitem.save!
+      redirect_to root_path, notice: "You've added something to your order!"
+    else
+      redirect_to :back, alert: 'Error!'
+    end
     # item_id: item.id, order_id: User.find(current_user.id).orders.where(paid: false).first.id
 
   end
@@ -51,6 +57,6 @@ class LineitemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lineitem_params
-      params.require(:lineitem).permit(:name, :description, :price, :quantity)
+      params.require(:lineitem).permit(:order_id, :item_id)
     end
 end

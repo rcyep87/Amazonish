@@ -1,23 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Paid:</strong>
+  <strong>User:</strong>
+  <%= @order.user.first_name %>
+</p>
+
+<p>
+  <strong>Paid?:</strong>
   <%= @order.paid %>
 </p>
 
 <p>
-  <strong>Email sent:</strong>
-  <%= @order.email_sent %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @order.user %>
-</p>
-
-<p>
   <strong>Item:</strong>
-  <%= @order.item %>
+  <% @order.items.each do |item| %>
+  <tr>
+    <td><%= link_to item.name, item %></td>
+    <% end %>
 </p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |

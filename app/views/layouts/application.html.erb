@@ -20,6 +20,9 @@
       <ul class="nav navbar-nav">
         <li><%= link_to 'Home', root_path %></li>
         <% if user_logged_in? %>
+          <% if current_user.current_cart %>
+            <li><%= link_to 'Shopping Cart', order_path(current_user.current_cart) %></li>
+          <% end %>
           <li><%= link_to 'Logout', logout_path, method: :DELETE %></li>
         <% else %>
           <li><%= link_to 'Create a Account', new_user_path %></li>
